@@ -1,0 +1,138 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+
+:root {
+    --Purple: hsl(259, 100%, 65%);
+    --Light-red: hsl(0, 100%, 67%);
+    --White: hsl(0, 0%, 100%);
+    --Off-white: hsl(0, 0%, 94%);
+    --Light-grey: hsl(0, 0%, 86%);
+    --Smokey-grey: hsl(0, 1%, 44%);
+    --Off-black: hsl(0, 0%, 8%);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    background-color: var(--Off-white);
+    color: var(--Off-black);
+}
+
+main {
+    margin-top: auto;
+    width: 500px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding: 2rem 4rem;
+    background-color: var(--White);
+    border-radius: 15px;
+    border-bottom-right-radius: 100px;
+}
+
+.date-container {
+    align-self: flex-start;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.date-container .input {
+    display: flex;
+    gap: 5px;
+    flex-flow: column nowrap;
+    width: 25%;
+}
+
+.input label {
+    font-size: 0.8rem;
+    color: var(--Smokey-grey);
+}
+
+.input input {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    border: 1px solid var(--Light-grey);
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.button-container .line {
+    border: 1px solid var(--Smokey-grey);
+    width: 90%;
+}
+
+.button-container button {
+    margin: 0;
+    background-image: url(assets/images/icon-arrow.svg);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-color: var(--Purple);
+    padding: 2rem;
+    border: none;
+    border-radius: 50%;
+    
+}
+
+.button-container button:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+    transition: .1s;
+}
+
+.button-container button:active {
+    filter: brightness(105%);
+    transition: .1s;
+}
+
+.result-container {
+    align-self: start;
+}
+
+.result-container p {
+    margin: 0;
+    padding: 0;
+    font-size: 5rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.result-container i {
+    color: var(--Purple);
+}
+
+
+
+
+
+
+
+
+footer { 
+    margin-top: auto;
+    font-size: 0.8rem; 
+    text-align: center; 
+}
+
+footer a { 
+    color: hsl(228, 45%, 44%); 
+}
