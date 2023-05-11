@@ -24,6 +24,8 @@ const today = new Date();
 
 let valid = false;
 
+let animation;
+
 //local varibles
 let day;
 let month;
@@ -73,9 +75,14 @@ function calculateAge(){
 
     const age_day = diff%30
 
-    day_result.textContent = age_day;
     month_result.textContent = age_month;
-    year_result.textContent = age_year;
+    day_result.textContent = age_day;
+    
+    year_result.textContent = '0';
+    if (!animation){
+        animation = setInterval(animateAge,40,age_year,year_result);
+    }
+
 }
 
 function getMonthDay(){
@@ -120,4 +127,15 @@ function getErrorBox(target){
         case 'year':
             return year_error;
     } 
+}
+
+function animateAge(age,result){
+    let dayInt = parseInt(result.textContent);
+    if(dayInt<age){
+        result.textContent = dayInt + 1;
+    }else {
+        clearInterval(animation);
+        animation = null;
+    }
+    console.log('test')
 }
