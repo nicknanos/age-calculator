@@ -41,6 +41,7 @@ main {
     border-bottom-right-radius: 100px;
 }
 
+
 .date-container {
     align-self: flex-start;
     display: flex;
@@ -66,6 +67,18 @@ main {
     padding: 0.5rem;
     border: 1px solid var(--Light-grey);
     border-radius: 5px;
+}
+
+.input input.touched:invalid {
+    border: 1px solid var(--Light-red);
+}
+
+.input .error {
+    color: var(--Light-red);
+    font-size: 0.5em;
+    position: relative;
+    top: -10px;
+    height: 1em;
 }
 
 .button-container {
@@ -95,12 +108,15 @@ main {
 
 .button-container button:hover {
     cursor: pointer;
-    filter: brightness(80%);
-    transition: .1s;
+    background-color: var(--Off-black);
+/*     filter: brightness(80%); */
+    transition: .5s;
 }
 
 .button-container button:active {
-    filter: brightness(105%);
+/*     filter: brightness(105%);
+ */    
+    background-color: var(--Purple);
     transition: .1s;
 }
 
@@ -120,13 +136,6 @@ main {
     color: var(--Purple);
 }
 
-
-
-
-
-
-
-
 footer { 
     margin-top: auto;
     font-size: 0.8rem; 
@@ -136,3 +145,37 @@ footer {
 footer a { 
     color: hsl(228, 45%, 44%); 
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+      width: 100%;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    .container {
+        padding: 2em 1em;
+    }
+
+    .input {
+        margin-bottom: 10px;
+    }
+
+    .input input {
+        font-size: 100%;
+    }
+
+    .button-container button {
+        position: absolute;
+    }
+
+    .result-container {
+        margin-top: 20px;
+    }
+
+    .result-container p {
+        font-size: 400%;
+    }
+  }
