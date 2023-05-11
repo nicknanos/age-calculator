@@ -5,14 +5,24 @@ const day_input = document.querySelector('#day');
 const month_input = document.querySelector('#month');
 const  year_input = document.querySelector('#year');
 
+const all_input = document.querySelectorAll('[required]');
 //resutl
 const day_result = document.querySelector('#day-result');
 const month_result = document.querySelector('#month-result');
 const  year_result = document.querySelector('#year-result');
 
+//error
+const day_error = document.querySelector('#day+.error');
+const month_error = document.querySelector('#month+.error');
+const year_error = document.querySelector('#year+.error');
+
+const form = document.querySelector('#date-form');
+
 const cButton = document.querySelector('.calculate');
 
 const today = new Date();
+
+let valid = false;
 
 //local varibles
 let day;
@@ -20,20 +30,33 @@ let month;
 let year;
 
 
-cButton.addEventListener('click',calculateAge)
+cButton.addEventListener('click',()=>{
+    all_input.forEach((data)=>{
+        if(!data.checkValidity()) valid = false;
+    });
+    if(valid) calculateAge();
+})
 
 day_input.addEventListener('input',(e)=>{
+    e.target.classList.add('touched');
     day = e.target.value;
+    checkValidity(e);
 })
 
 month_input.addEventListener('input',(e)=>{
+    e.target.classList.add('touched');
     month = e.target.value;
+    checkValidity(e);
 })
 
 year_input.addEventListener('input',(e)=>{
+    e.target.classList.add('touched');
     year = e.target.value;
+    checkValidity(e);
 })
 
+
+form.addEventListener('submit',(e)=>e.preventDefault());
 
 function calculateAge(){
     let birthday = new Date(year,month-1,day);
@@ -53,4 +76,48 @@ function calculateAge(){
     day_result.textContent = age_day;
     month_result.textContent = age_month;
     year_result.textContent = age_year;
+}
+
+function getMonthDay(){
+    let monthInt = parseInt(month);
+    if (monthInt == 2) return 28;
+    if (monthInt%2 == 0){
+        return 30;
+    } else return 31;
+}
+
+function checkMonth(){
+    return (parseInt(month)>getMonthDay() ? false : true);
+}
+
+function isEmpty(target){
+    return(target.value=='' ? true : false);
+}
+
+function checkValidity(e){
+    e.preventDefault();
+    let target = e.target.id;
+    if(e.target.checkValidity() && checkMonth()){
+            getErrorBox(target).textContent = '';
+            valid = true;
+    }else {
+            if(isEmpty(e.target)){
+                getErrorBox(target).textContent = '*This field is required'
+            }else{
+                getErrorBox(target).textContent= `*Invalid ${target}`;
+            }
+            valid =false;
+    }
+    
+}
+
+function getErrorBox(target){
+    switch(target){
+        case 'day':
+            return day_error;
+        case 'month':
+            return month_error;
+        case 'year':
+            return year_error;
+    } 
 }
